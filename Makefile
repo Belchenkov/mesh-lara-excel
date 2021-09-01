@@ -12,9 +12,6 @@ docker-build:
 test:
 	docker-compose exec api-php-cli vendor/bin/phpunit
 
-queue:
-	docker-compose exec api-php-cli php artisan queue:work
-
 db-migrate:
 	docker-compose exec api-php-cli php artisan migrate
 
