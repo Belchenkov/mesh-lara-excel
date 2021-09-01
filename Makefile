@@ -23,3 +23,6 @@ db-migrate-seed:
 
 db-refresh:
 	docker-compose exec api-php-cli php artisan migrate:refresh --seed
+
+queue-work:
+	docker-compose exec api-php-cli php artisan queue:work

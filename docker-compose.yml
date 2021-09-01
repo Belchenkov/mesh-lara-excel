@@ -38,7 +38,7 @@ services:
     db:
         image: adambh/mariadb-alpine
         volumes:
-            - ./storage/docker/db:/var/lib/db
+            - ./storage/docker/mysql:/var/lib/mysql
         environment:
             - "MYSQL_ROOT_PASSWORD=secret"
             - "MYSQL_USER=app"
@@ -53,12 +53,13 @@ services:
         image: redis:6-alpine
         ports:
             - "63791:6379"
+        networks:
+            - laravel
 
     cron:
         build:
             context: ./docker
             dockerfile: cron.dockerfile
-        container_name: cron
         tty: true
         volumes:
             - ./:/var/www
