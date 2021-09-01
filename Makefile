@@ -26,3 +26,11 @@ db-refresh:
 
 queue-work:
 	docker-compose exec api-php-cli php artisan queue:work
+
+parse-excel:
+	docker-compose exec api-php-cli php artisan parse:excel
+
+clear-count-rows:
+	docker-compose exec api-php-cli php artisan clear:count-rows
+
+restart-parse: db-refresh clear-count-rows
