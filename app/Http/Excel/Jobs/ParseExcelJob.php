@@ -2,12 +2,13 @@
 
 namespace App\Http\Excel\Jobs;
 
+use App\Http\Excel\Imports\ExcelImport;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Excel;
 
 class ParseExcelJob implements ShouldQueue
 {
@@ -27,7 +28,8 @@ class ParseExcelJob implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
+        Excel::import(new ExcelImport(), storage_path('app/excel/test.xlsx'));
     }
 }
